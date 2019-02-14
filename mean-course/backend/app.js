@@ -62,3 +62,5 @@ app.delete("/api/posts/:id", (req, res, next) => {
 });
 
 module.exports = app;
+
+// npm run start:server
