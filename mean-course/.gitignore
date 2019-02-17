@@ -40,4 +40,4 @@ testem.log
 Thumbs.db
 
 # Ignore folder named `pictures`
-pictures/
+images/
