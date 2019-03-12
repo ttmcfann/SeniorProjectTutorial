@@ -10,6 +10,7 @@ export class AuthService {
   private token: string;
   private authStatusListener = new Subject<boolean>();
   private tokenTimer: any;
+  private userId: string;
   constructor(private http: HttpClient, private router: Router) {}
 
   getToken() {
@@ -18,6 +19,10 @@ export class AuthService {
 
   getIsAuth() {
     return this.isAuthenticated;
+  }
+
+  getUserId() {
+    return this.userId;
   }
 
   getAuthStatusListener() {
@@ -34,7 +39,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     const authData: AuthData = {email: email, password: password};
-    this.http.post<{token: string, expiresIn: number}>('http://localhost:3000/api/user/login', authData)
+    this.http.post<{token: string, expiresIn: number, userId: string}>('http://localhost:3000/api/user/login', authData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
@@ -44,6 +49,7 @@ export class AuthService {
           this.logout();
         }, expiresInDuration * 1000);
         this.isAuthenticated = true;
+        this.userId = response.userId;
         this.authStatusListener.next(true);
         this.router.navigate(['/']);
         }
@@ -54,6 +60,7 @@ export class AuthService {
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
+    this.userId = null;
     clearTimeout(this.tokenTimer);
     this.router.navigate(['/']);
 
