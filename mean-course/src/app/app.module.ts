@@ -14,7 +14,8 @@ import { AngularMaterialModule } from './auth/angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { RecapCreateComponent } from './recap/recap-create/recap-create.component';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule, MatButtonModule, MatToolbar } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatToolbar, MatExpansionModule } from '@angular/material';
+import { RecapListComponent } from './recap/recap-list/recap-list.component';
 
 
 
@@ -23,7 +24,8 @@ import { MatInputModule, MatButtonModule, MatToolbar } from '@angular/material';
     AppComponent,
     HeaderComponent,
     ErrorComponent,
-    RecapCreateComponent
+    RecapCreateComponent,
+    RecapListComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { MatInputModule, MatButtonModule, MatToolbar } from '@angular/material';
     PostsModule,
     FormsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatExpansionModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

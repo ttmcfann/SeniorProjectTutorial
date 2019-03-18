@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class RecapCreateComponent {
   enteredValue = '';
-  newRecap = 'NO CONTENT';
+  newRecap = '';
 
 
   onAddRecap() {
