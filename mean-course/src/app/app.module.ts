@@ -14,7 +14,7 @@ import { AngularMaterialModule } from './auth/angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { RecapCreateComponent } from './recap/recap-create/recap-create.component';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule, MatButtonModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatToolbar } from '@angular/material';
 
 
 
