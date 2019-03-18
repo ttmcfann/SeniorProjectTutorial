@@ -14,6 +14,9 @@ import { AngularMaterialModule } from './auth/angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { RecapCreateComponent } from './recap/recap-create/recap-create.component';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule, MatButtonModule } from '@angular/material';
+
+
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     AngularMaterialModule,
     PostsModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

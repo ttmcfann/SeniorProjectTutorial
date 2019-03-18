@@ -1,4 +1,10 @@
-<textarea rows="6" [(ngModel)]="enteredValue"></textarea>
-<hr>
-<button (click)="onAddRecap()">Save Recap</button>
+<mat-card>
+  <mat-form-field>
+  <textarea matInput rows="6" [(ngModel)]="enteredValue"></textarea>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="onAddRecap()">Save Recap</button>
+</mat-card>
 <p>{{ newRecap }}</p>
