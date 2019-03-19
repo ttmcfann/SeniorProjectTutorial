@@ -45,9 +45,15 @@ app.use("/api/user" ,userRoutes);
 
 
 
+app.post("/api/recaps", (req, res, next) => {
+  const recap = req.body;
+  console.log(recap);
+  res.status(201).json({
+    message: 'Post added sucesfully'
+  });
+});
 
-
-app.use( '/api/recaps', (req,res,next) => {
+app.get( '/api/recaps', (req,res,next) => {
   const recaps = [
     {
       id: 'fadf12421l',
