@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
 
+const Recap = require('./models/recap');
+
 const app = express();
 
 
@@ -46,30 +48,24 @@ app.use("/api/user" ,userRoutes);
 
 
 app.post("/api/recaps", (req, res, next) => {
-  const recap = req.body;
-  console.log(recap);
+  const recap = new Recap({
+    title: req.body.title,
+    content: req.body.content
+  });
+  recap.save();
   res.status(201).json({
     message: 'Post added sucesfully'
   });
 });
 
 app.get( '/api/recaps', (req,res,next) => {
-  const recaps = [
-    {
-      id: 'fadf12421l',
-      title: 'First server-side post',
-      content: 'This is coming from the server'
-    },
-    {
-      id: 'dfasdfa3',
-      title: 'Second server-side post',
-      content: 'This is coming from the server!'
-    }
-  ];
-  res.status(200).json({
-    message: 'Posts fetched succesfully!',
-    recaps: recaps
-  });
+  Recap.find()
+    .then(documents => {
+      res.status(200).json({
+        message: 'Posts fetched succesfully!',
+        recaps: documents
+      });
+    });
 });
 
 //rM6BBl2KVZuvtyIr
