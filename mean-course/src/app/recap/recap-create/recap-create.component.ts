@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Recap } from '../recap.model';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { RecapsService } from '../recaps.service';
 
 @Component({
   selector: 'app-recap-create',
@@ -10,17 +10,13 @@ import { NgForm } from '@angular/forms';
 export class RecapCreateComponent {
   enteredContent = '';
   enteredTitle = '';
-  @Output() recapCreated = new EventEmitter<Recap>();
 
 
+  constructor(public recapsService: RecapsService) {}
   onAddRecap(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    const recap: Recap = {
-      title: form.value.title,
-      content: form.value.content
-    };
-    this.recapCreated.emit(recap);
+    this.recapsService.addRecap(form.value.title, form.value.content);
   }
 }
