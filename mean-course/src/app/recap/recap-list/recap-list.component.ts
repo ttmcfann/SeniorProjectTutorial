@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Recap } from '../recap.model';
+
 
 @Component({
   selector: 'app-recap-list',
@@ -11,6 +13,6 @@ export class RecapListComponent {
   //   {title: 'Second Recap', content: 'This is the second post\'s content'},
   //   {title: 'Third Recap', content: 'This is the third post\'s content'},
   // ];
-  recaps = [];
+  @Input() recaps: Recap[] = [];
 
 }

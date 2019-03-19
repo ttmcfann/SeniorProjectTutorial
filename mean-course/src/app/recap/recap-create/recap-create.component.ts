@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Recap } from '../recap.model';
 
 @Component({
   selector: 'app-recap-create',
@@ -6,11 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./recap-create.component.css']
 })
 export class RecapCreateComponent {
-  enteredValue = '';
-  newRecap = '';
+  enteredContent = '';
+  enteredTitle = '';
+  @Output() recapCreated = new EventEmitter<Recap>();
 
 
   onAddRecap() {
-    this.newRecap = this.enteredValue;
+    const recap: Recap = {
+      title: this.enteredTitle,
+      content: this.enteredContent
+    };
+    this.recapCreated.emit(recap);
   }
 }
