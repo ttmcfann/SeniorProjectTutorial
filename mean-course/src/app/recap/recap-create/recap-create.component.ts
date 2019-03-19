@@ -18,5 +18,6 @@ export class RecapCreateComponent {
       return;
     }
     this.recapsService.addRecap(form.value.title, form.value.content);
+    form.resetForm();
   }
 }

@@ -4,6 +4,10 @@
       {{ recap.title }}
     </mat-expansion-panel-header>
     <p>{{ recap.content }}</p>
+    <mat-action-row>
+      <button mat-button color="primary">EDIT</button>
+      <button mat-button delete="warn">DELETE</button>
+    </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
 <p class="info-text mat-body-1" *ngIf="recaps.length <=0">No recaps added yet!</p>
