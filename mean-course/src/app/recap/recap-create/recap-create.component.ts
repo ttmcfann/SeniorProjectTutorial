@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Recap } from '../recap.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-recap-create',
@@ -12,10 +13,13 @@ export class RecapCreateComponent {
   @Output() recapCreated = new EventEmitter<Recap>();
 
 
-  onAddRecap() {
+  onAddRecap(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
     const recap: Recap = {
-      title: this.enteredTitle,
-      content: this.enteredContent
+      title: form.value.title,
+      content: form.value.content
     };
     this.recapCreated.emit(recap);
   }
