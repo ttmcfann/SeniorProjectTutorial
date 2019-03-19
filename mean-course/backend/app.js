@@ -8,6 +8,13 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
+
+
+
+
+
+
+
 mongoose.connect("mongodb+srv://thomas:" + process.env.MONGO_ATLAS_PW + "@cluster0-wj2bz.mongodb.net/node-angular?retryWrites=true", { useNewUrlParser: true })
   .then(()=> {
     console.log('Connected to database!');
@@ -37,6 +44,27 @@ app.use("/api/posts" ,postsRoutes);
 app.use("/api/user" ,userRoutes);
 
 
+
+
+
+app.use( '/api/recaps', (req,res,next) => {
+  const recaps = [
+    {
+      id: 'fadf12421l',
+      title: 'First server-side post',
+      content: 'This is coming from the server'
+    },
+    {
+      id: 'dfasdfa3',
+      title: 'Second server-side post',
+      content: 'This is coming from the server!'
+    }
+  ];
+  res.status(200).json({
+    message: 'Posts fetched succesfully!',
+    recaps: recaps
+  });
+});
 
 //rM6BBl2KVZuvtyIr
 
