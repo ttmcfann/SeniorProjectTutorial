@@ -2,6 +2,7 @@ import { Recap } from './recap.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class RecapsService {
@@ -11,9 +12,20 @@ export class RecapsService {
   constructor( private http: HttpClient) {}
 
   getRecaps() {
-    this.http.get<{message: string, recaps: Recap[]}>('http://localhost:3000/api/recaps')
-      .subscribe((recapData) => {
-        this.recaps = recapData.recaps;
+    this.http.get<{message: string, recaps: any}>(
+      'http://localhost:3000/api/recaps'
+      )
+      .pipe(map((recapData) => {
+        return recapData.recaps.map(recap => {
+          return {
+            title: recap.title,
+            content: recap.content,
+            id: recap._id
+          };
+        });
+      }))
+      .subscribe((transformedRecaps) => {
+        this.recaps = transformedRecaps;
         this.recapsUpdated.next([...this.recaps]);
       });
   }
