@@ -1,4 +1,5 @@
 import { Recap } from './recap.model';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -7,8 +8,14 @@ export class RecapsService {
   private recaps: Recap[] = [];
   private recapsUpdated = new Subject<Recap[]>();
 
+  constructor( private http: HttpClient) {}
+
   getRecaps() {
-    return [...this.recaps];
+    this.http.get<{message: string, recaps: Recap[]}>('http://localhost:3000/api/recaps')
+      .subscribe((recapData) => {
+        this.recaps = recapData.recaps;
+        this.recapsUpdated.next([...this.recaps]);
+      });
   }
 
   getRecapUpdateListener() {
@@ -16,7 +23,7 @@ export class RecapsService {
   }
 
   addRecap(title: string, content: string) {
-    const recap: Recap = {title: title, content: content};
+    const recap: Recap = {id: null, title: title, content: content};
     this.recaps.push(recap);
     this.recapsUpdated.next([...this.recaps]);
   }

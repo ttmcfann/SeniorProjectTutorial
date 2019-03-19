@@ -21,7 +21,7 @@ export class RecapListComponent implements OnInit, OnDestroy {
   constructor(public recapsService: RecapsService) {}
 
   ngOnInit() {
-    this.recaps = this.recapsService.getRecaps();
+    this.recapsService.getRecaps();
     this.recapsSub = this.recapsService.getRecapUpdateListener()
       .subscribe((recaps: Recap[]) => {
         this.recaps = recaps;
