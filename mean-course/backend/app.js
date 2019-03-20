@@ -68,6 +68,13 @@ app.get( '/api/recaps', (req,res,next) => {
     });
 });
 
+app.delete("/api/recaps/:id", (req, res, next) => {
+  Recap.deleteOne({_id: req.params.id}).then(result => {
+    console.log(result);
+    res.status(200).json({ message: "Post deleted!"});
+  });
+});
+
 //rM6BBl2KVZuvtyIr
 
 module.exports = app;

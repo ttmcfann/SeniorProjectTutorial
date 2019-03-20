@@ -28,6 +28,10 @@ export class RecapListComponent implements OnInit, OnDestroy {
       });
   }
 
+  onDelete(recapId: string) {
+    this.recapsService.deleteRecap(recapId);
+  }
+
   ngOnDestroy() {
     this.recapsSub.unsubscribe();
   }
