@@ -52,9 +52,11 @@ app.post("/api/recaps", (req, res, next) => {
     title: req.body.title,
     content: req.body.content
   });
-  recap.save();
-  res.status(201).json({
-    message: 'Post added sucesfully'
+  recap.save().then(createdRecap => {
+    res.status(201).json({
+      message: 'Post added succesfully',
+      recapId: createdRecap._id
+  });
   });
 });
 

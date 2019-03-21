@@ -36,9 +36,11 @@ export class RecapsService {
 
   addRecap(title: string, content: string) {
     const recap: Recap = {id: null, title: title, content: content};
-    this.http.post<{message: string}>('http://localhost:3000/api/recaps', recap)
+    this.http
+      .post<{ message: string, recapId: string}>('http://localhost:3000/api/recaps', recap)
       .subscribe((responseData) => {
-        console.log(responseData.message);
+        const id = responseData.recapId;
+        recap.id = id;
         this.recaps.push(recap);
         this.recapsUpdated.next([...this.recaps]);
       });
