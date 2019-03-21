@@ -16,14 +16,17 @@ export class RecapListComponent implements OnInit, OnDestroy {
   //   {title: 'Third Recap', content: 'This is the third post\'s content'},
   // ];
   recaps: Recap[] = [];
+  isLoading = false;
   private recapsSub: Subscription;
 
   constructor(public recapsService: RecapsService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.recapsService.getRecaps();
     this.recapsSub = this.recapsService.getRecapUpdateListener()
       .subscribe((recaps: Recap[]) => {
+        this.isLoading = false;
         this.recaps = recaps;
       });
   }

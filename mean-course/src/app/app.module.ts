@@ -14,7 +14,11 @@ import { AngularMaterialModule } from './auth/angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { RecapCreateComponent } from './recap/recap-create/recap-create.component';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule, MatButtonModule, MatToolbar, MatExpansionModule } from '@angular/material';
+import {
+  MatInputModule,
+  MatButtonModule,
+  MatProgressSpinnerModule,
+  MatExpansionModule } from '@angular/material';
 import { RecapListComponent } from './recap/recap-list/recap-list.component';
 
 
@@ -37,7 +41,8 @@ import { RecapListComponent } from './recap/recap-list/recap-list.component';
     FormsModule,
     MatInputModule,
     MatButtonModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

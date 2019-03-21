@@ -3,13 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class RecapsService {
   private recaps: Recap[] = [];
   private recapsUpdated = new Subject<Recap[]>();
 
-  constructor( private http: HttpClient) {}
+  constructor(
+  private http: HttpClient,
+  private router: Router
+  ) {}
 
   getRecaps() {
     this.http.get<{message: string, recaps: any}>(
@@ -47,6 +51,7 @@ export class RecapsService {
         recap.id = id;
         this.recaps.push(recap);
         this.recapsUpdated.next([...this.recaps]);
+        this.router.navigate(['/']);
       });
   }
 
@@ -59,6 +64,7 @@ export class RecapsService {
         updatedRecaps[oldRecapIndex] = recap;
         this.recaps = updatedRecaps;
         this.recapsUpdated.next([...this.recaps]);
+        this.router.navigate(['/']);
       });
   }
 

@@ -12,6 +12,7 @@ import { Recap } from '../recap.model';
 export class RecapCreateComponent implements OnInit {
   enteredContent = '';
   enteredTitle = '';
+  isLoading = false;
   private mode = 'create';
   private recapId: string;
   recap: Recap;
@@ -25,7 +26,9 @@ export class RecapCreateComponent implements OnInit {
       if (paramMap.has('recapId')) {
         this.mode = 'edit';
         this.recapId = paramMap.get('recapId');
+        this.isLoading = true;
         this.recapsService.getRecap(this.recapId).subscribe(recapData => {
+          this.isLoading = false;
           this.recap = {id: recapData._id, title: recapData.title, content: recapData.content};
         });
       } else {
@@ -39,6 +42,7 @@ export class RecapCreateComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     if (this.mode === 'create') {
       this.recapsService.addRecap(form.value.title, form.value.content);
     } else {
