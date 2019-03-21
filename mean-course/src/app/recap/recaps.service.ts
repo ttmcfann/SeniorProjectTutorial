@@ -34,6 +34,10 @@ export class RecapsService {
     return this.recapsUpdated.asObservable();
   }
 
+  getRecap(id: string) {
+    return this.http.get<{_id: string, title: string, content: string}>('http://localhost:3000/api/recaps/' + id);
+  }
+
   addRecap(title: string, content: string) {
     const recap: Recap = {id: null, title: title, content: content};
     this.http
@@ -42,6 +46,18 @@ export class RecapsService {
         const id = responseData.recapId;
         recap.id = id;
         this.recaps.push(recap);
+        this.recapsUpdated.next([...this.recaps]);
+      });
+  }
+
+  updateRecap(id: string, title: string, content: string) {
+    const recap: Recap = { id: id, title: title, content: content };
+    this.http.put('http://localhost:3000/api/recaps/' + id, recap)
+      .subscribe(response => {
+        const updatedRecaps = [...this.recaps];
+        const oldRecapIndex = updatedRecaps.findIndex(r => r.id === recap.id);
+        updatedRecaps[oldRecapIndex] = recap;
+        this.recaps = updatedRecaps;
         this.recapsUpdated.next([...this.recaps]);
       });
   }

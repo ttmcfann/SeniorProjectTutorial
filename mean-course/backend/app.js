@@ -60,6 +60,29 @@ app.post("/api/recaps", (req, res, next) => {
   });
 });
 
+app.put("/api/recaps/:id", (req, res, next) => {
+  const recap = new Recap({
+    _id: req.body.id,
+    title: req.body.title,
+    content: req.body.content
+  });
+  Recap.updateOne({ _id: req.params.id }, recap)
+    .then(result => {
+      console.log(result);
+      res.status(200).json({message: 'Update successful!'});
+    });
+});
+
+app.get("/api/recaps/:id", (req, res, next) => {
+  Recap.findById(req.params.id).then(recap => {
+    if (recap) {
+      res.status(200).json(recap);
+    } else {
+      res.status(404).json({message: 'Post not found'});
+    }
+  });
+});
+
 app.get( '/api/recaps', (req,res,next) => {
   Recap.find()
     .then(documents => {
@@ -69,6 +92,7 @@ app.get( '/api/recaps', (req,res,next) => {
       });
     });
 });
+
 
 app.delete("/api/recaps/:id", (req, res, next) => {
   Recap.deleteOne({_id: req.params.id}).then(result => {

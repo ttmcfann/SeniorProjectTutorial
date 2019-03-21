@@ -1,11 +1,11 @@
 <mat-card>
-<form (submit)= "onAddRecap(recapForm)" #recapForm="ngForm">
+<form (submit)= "onSaveRecap(recapForm)" #recapForm="ngForm">
   <mat-form-field>
     <input
       matInput
       type="text"
       name="title"
-      ngModel
+      [ngModel] = recap?.title
       required
       minlength="3"
       placeholder ="Entry Title"
@@ -17,7 +17,7 @@
       matInput
       rows="4"
       name="content"
-      ngModel
+      [ngModel] = recap?.content
       required
       placeholder="Entry Content"
       #content="ngModel"></textarea>
