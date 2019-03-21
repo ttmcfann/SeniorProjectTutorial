@@ -4,6 +4,9 @@
     <mat-expansion-panel-header>
       {{ recap.title }}
     </mat-expansion-panel-header>
+    <div class="recap-image">
+      <img [src]="recap.imagePath" [alt]="recap.title">
+    </div>
     <p>{{ recap.content }}</p>
     <mat-action-row>
       <a mat-button color="primary" [routerLink]="['/editRecap', recap.id]">EDIT</a>

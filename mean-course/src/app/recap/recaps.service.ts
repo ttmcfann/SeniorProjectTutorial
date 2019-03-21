@@ -24,7 +24,8 @@ export class RecapsService {
           return {
             title: recap.title,
             content: recap.content,
-            id: recap._id
+            id: recap._id,
+            imagePath: recap.imagePath
           };
         });
       }))
@@ -42,13 +43,23 @@ export class RecapsService {
     return this.http.get<{_id: string, title: string, content: string}>('http://localhost:3000/api/recaps/' + id);
   }
 
-  addRecap(title: string, content: string) {
-    const recap: Recap = {id: null, title: title, content: content};
+  addRecap(title: string, content: string, image: File) {
+    const recapData = new FormData();
+    recapData.append('title', title);
+    recapData.append('content', content);
+    recapData.append('image', image, title);
     this.http
-      .post<{ message: string, recapId: string}>('http://localhost:3000/api/recaps', recap)
+      .post<{ message: string, recap: Recap}>(
+        'http://localhost:3000/api/recaps',
+         recapData
+        )
       .subscribe((responseData) => {
-        const id = responseData.recapId;
-        recap.id = id;
+        const recap: Recap = {
+          id: responseData.recap.id,
+          title: title,
+          content: content,
+          imagePath: responseData.recap.imagePath
+        };
         this.recaps.push(recap);
         this.recapsUpdated.next([...this.recaps]);
         this.router.navigate(['/']);
@@ -56,7 +67,7 @@ export class RecapsService {
   }
 
   updateRecap(id: string, title: string, content: string) {
-    const recap: Recap = { id: id, title: title, content: content };
+    const recap: Recap = { id: id, title: title, content: content, imagePath: null };
     this.http.put('http://localhost:3000/api/recaps/' + id, recap)
       .subscribe(response => {
         const updatedRecaps = [...this.recaps];

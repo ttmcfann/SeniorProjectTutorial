@@ -3,6 +3,7 @@ import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 import { RecapsService } from '../recaps.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Recap } from '../recap.model';
+import { mimeType} from './mim-type.validator';
 
 @Component({
   selector: 'app-recap-create',
@@ -31,7 +32,7 @@ export class RecapCreateComponent implements OnInit {
         validators: [Validators.required, Validators.minLength(3)]
       }),
       'content': new FormControl(null, {validators: [Validators.required]}),
-      'image': new FormControl(null, {validators: []})
+      'image': new FormControl(null, {validators: [Validators.required], asyncValidators: [mimeType]})
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('recapId')) {
@@ -43,7 +44,8 @@ export class RecapCreateComponent implements OnInit {
           this.recap = {
             id: recapData._id,
             title: recapData.title,
-            content: recapData.content
+            content: recapData.content,
+            imagePath: null
           };
           this.form.setValue({
             'title': this.recap.title,
@@ -74,7 +76,10 @@ export class RecapCreateComponent implements OnInit {
     }
     this.isLoading = true;
     if (this.mode === 'create') {
-      this.recapsService.addRecap(this.form.value.title, this.form.value.content);
+      this.recapsService.addRecap(
+        this.form.value.title,
+        this.form.value.content,
+        this.form.value.image);
     } else {
       this.recapsService.updateRecap(this.recapId, this.form.value.title, this.form.value.content);
     }
