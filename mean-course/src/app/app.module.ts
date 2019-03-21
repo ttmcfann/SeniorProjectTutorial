@@ -13,7 +13,7 @@ import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './auth/angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { RecapCreateComponent } from './recap/recap-create/recap-create.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatInputModule,
   MatButtonModule,
@@ -42,7 +42,8 @@ import { RecapListComponent } from './recap/recap-list/recap-list.component';
     MatInputModule,
     MatButtonModule,
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
