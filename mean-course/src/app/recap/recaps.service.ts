@@ -44,10 +44,12 @@ export class RecapsService {
       });
   }
 
-  deleteRecap(postId: string) {
-    this.http.delete("http://localhost:3000/api/recaps/" + postId)
+  deleteRecap(recapId: string) {
+    this.http.delete('http://localhost:3000/api/recaps/' + recapId)
       .subscribe(() => {
-        console.log('Deleted!');
+        const updatedRecap = this.recaps.filter(recap => recap.id !== recapId);
+        this.recaps = updatedRecap;
+        this.recapsUpdated.next([...this.recaps]);
       });
   }
 }
