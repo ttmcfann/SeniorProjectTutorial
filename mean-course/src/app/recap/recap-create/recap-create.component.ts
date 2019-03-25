@@ -45,11 +45,13 @@ export class RecapCreateComponent implements OnInit {
             id: recapData._id,
             title: recapData.title,
             content: recapData.content,
-            imagePath: null
+            imagePath: recapData.imagePath
           };
           this.form.setValue({
             'title': this.recap.title,
-            'content': this.recap.content});
+            'content': this.recap.content,
+            'image': this.recap.imagePath
+          });
         });
       } else {
         this.mode = 'create';
@@ -81,7 +83,12 @@ export class RecapCreateComponent implements OnInit {
         this.form.value.content,
         this.form.value.image);
     } else {
-      this.recapsService.updateRecap(this.recapId, this.form.value.title, this.form.value.content);
+      this.recapsService.updateRecap(
+        this.recapId,
+        this.form.value.title,
+        this.form.value.content,
+        this.form.value.image
+        );
     }
 
     this.form.reset();
