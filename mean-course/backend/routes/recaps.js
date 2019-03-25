@@ -79,7 +79,15 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.get( "", (req,res,next) => {
-  Recap.find()
+  const pageSize = +req.query.pageSize;
+  const currentPage = +req.query.page;
+  const recapQuery = Recap.find();
+  if (pageSize && currentPage) {
+    recapQuery
+      .skip(pageSize * (currentPage - 1))
+      .limit(pageSize);
+  }
+  recapQuery
     .then(documents => {
       res.status(200).json({
         message: 'Posts fetched succesfully!',

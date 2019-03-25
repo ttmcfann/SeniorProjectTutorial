@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Recap } from '../recap.model';
 import { RecapsService } from '../recaps.service';
 import { Subscription } from 'rxjs';
+import { PageEvent } from '@angular/material';
 
 
 @Component({
@@ -17,6 +18,9 @@ export class RecapListComponent implements OnInit, OnDestroy {
   // ];
   recaps: Recap[] = [];
   isLoading = false;
+  totalRecaps = 10;
+  recapsPerPage = 2;
+  recapSizeOptions = [1,2,5,10];
   private recapsSub: Subscription;
 
   constructor(public recapsService: RecapsService) {}
@@ -29,6 +33,10 @@ export class RecapListComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.recaps = recaps;
       });
+  }
+
+  onChangedRecap(recapData: PageEvent) {
+
   }
 
   onDelete(recapId: string) {
