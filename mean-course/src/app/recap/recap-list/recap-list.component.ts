@@ -18,8 +18,9 @@ export class RecapListComponent implements OnInit, OnDestroy {
   // ];
   recaps: Recap[] = [];
   isLoading = false;
-  totalRecaps = 10;
+  totalRecaps = 0;
   recapsPerPage = 2;
+  currentPage = 1;
   recapSizeOptions = [1,2,5,10];
   private recapsSub: Subscription;
 
@@ -27,20 +28,27 @@ export class RecapListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    this.recapsService.getRecaps();
+    this.recapsService.getRecaps(this.recapsPerPage, this.currentPage);
     this.recapsSub = this.recapsService.getRecapUpdateListener()
-      .subscribe((recaps: Recap[]) => {
+      .subscribe((recapData: {recaps: Recap[], recapCount: number}) => {
         this.isLoading = false;
-        this.recaps = recaps;
+        this.totalRecaps = recapData.recapCount;
+        this.recaps = recapData.recaps;
       });
   }
 
   onChangedRecap(recapData: PageEvent) {
-
+    this.isLoading = true;
+    this.currentPage = recapData.pageIndex + 1;
+    this.recapsPerPage = recapData.pageSize;
+    this.recapsService.getRecaps(this.recapsPerPage, this.currentPage);
   }
 
   onDelete(recapId: string) {
-    this.recapsService.deleteRecap(recapId);
+    this.isLoading = true;
+    this.recapsService.deleteRecap(recapId).subscribe(() => {
+      this.recapsService.getRecaps(this.recapsPerPage, this.currentPage);
+    });
   }
 
   ngOnDestroy() {

@@ -82,6 +82,7 @@ router.get( "", (req,res,next) => {
   const pageSize = +req.query.pageSize;
   const currentPage = +req.query.page;
   const recapQuery = Recap.find();
+  let fetchedRecaps;
   if (pageSize && currentPage) {
     recapQuery
       .skip(pageSize * (currentPage - 1))
@@ -89,9 +90,15 @@ router.get( "", (req,res,next) => {
   }
   recapQuery
     .then(documents => {
+      fetchedRecaps = documents;
+      return Recap.count();
+
+    })
+    .then(count => {
       res.status(200).json({
         message: 'Posts fetched succesfully!',
-        recaps: documents
+        recaps: fetchedRecaps,
+        maxRecaps: count
       });
     });
 });

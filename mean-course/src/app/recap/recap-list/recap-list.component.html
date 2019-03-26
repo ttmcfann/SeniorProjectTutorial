@@ -14,5 +14,5 @@
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<mat-paginator [length]="totalRecaps" [pageSize] ="recapsPerPage" [pageSizeOptions]="recapSizeOptions" (page)="onChangedRecap($event)"></mat-paginator>
+<mat-paginator [length]="totalRecaps" [pageSize] ="recapsPerPage" [pageSizeOptions]="recapSizeOptions" (page)="onChangedRecap($event)" *ngIf="recaps.length > 0"></mat-paginator>
 <p class="info-text mat-body-1" *ngIf="recaps.length <=0 && !isLoading">No recaps added yet!</p>

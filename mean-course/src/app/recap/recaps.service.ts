@@ -8,30 +8,35 @@ import { Router } from '@angular/router';
 @Injectable({providedIn: 'root'})
 export class RecapsService {
   private recaps: Recap[] = [];
-  private recapsUpdated = new Subject<Recap[]>();
+  private recapsUpdated = new Subject<{recaps: Recap[], recapCount: number}>();
 
   constructor(
   private http: HttpClient,
   private router: Router
   ) {}
 
-  getRecaps() {
-    this.http.get<{message: string, recaps: any}>(
-      'http://localhost:3000/api/recaps'
+  getRecaps(recapsPerPage: number, currentPage: number) {
+    const queryParams = `?pageSize=${recapsPerPage}&page=${currentPage}`;
+    this.http.get<{message: string, recaps: any, maxRecaps: number}>(
+      'http://localhost:3000/api/recaps' + queryParams
       )
       .pipe(map((recapData) => {
-        return recapData.recaps.map(recap => {
+        return {recaps: recapData.recaps.map(recap => {
           return {
             title: recap.title,
             content: recap.content,
             id: recap._id,
             imagePath: recap.imagePath
           };
-        });
+        }),
+        maxRecaps: recapData.maxRecaps};
       }))
-      .subscribe((transformedRecaps) => {
-        this.recaps = transformedRecaps;
-        this.recapsUpdated.next([...this.recaps]);
+      .subscribe((transformedRecapData) => {
+        this.recaps = transformedRecapData.recaps;
+        this.recapsUpdated.next({
+          recaps: [...this.recaps],
+          recapCount: transformedRecapData.maxRecaps
+        });
       });
   }
 
@@ -54,14 +59,6 @@ export class RecapsService {
          recapData
         )
       .subscribe((responseData) => {
-        const recap: Recap = {
-          id: responseData.recap.id,
-          title: title,
-          content: content,
-          imagePath: responseData.recap.imagePath
-        };
-        this.recaps.push(recap);
-        this.recapsUpdated.next([...this.recaps]);
         this.router.navigate(['/']);
       });
   }
@@ -84,27 +81,11 @@ export class RecapsService {
     }
     this.http.put('http://localhost:3000/api/recaps/' + id, recapData)
       .subscribe(response => {
-        const updatedRecaps = [...this.recaps];
-        const oldRecapIndex = updatedRecaps.findIndex(r => r.id === id);
-        const recap: Recap = {
-        id: id,
-        title: title,
-        content: content,
-        imagePath: ''
-        };
-        updatedRecaps[oldRecapIndex] = recap;
-        this.recaps = updatedRecaps;
-        this.recapsUpdated.next([...this.recaps]);
         this.router.navigate(['/']);
       });
   }
 
   deleteRecap(recapId: string) {
-    this.http.delete('http://localhost:3000/api/recaps/' + recapId)
-      .subscribe(() => {
-        const updatedRecap = this.recaps.filter(recap => recap.id !== recapId);
-        this.recaps = updatedRecap;
-        this.recapsUpdated.next([...this.recaps]);
-      });
+    return this.http.delete('http://localhost:3000/api/recaps/' + recapId);
   }
 }
