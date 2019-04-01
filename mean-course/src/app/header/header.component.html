@@ -10,7 +10,7 @@
     <li>
       <a mat-button routerLink="/recap">DevotionalRecap</a>
     </li>
-    <li>
+    <li *ngIf="userIsAuthenticated">
       <a mat-button routerLink="/createRecap">CreateRecap</a>
     </li>
     <li *ngIf="!userIsAuthenticated">
