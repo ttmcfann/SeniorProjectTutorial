@@ -3,6 +3,7 @@ import { Recap } from '../recap.model';
 import { RecapsService } from '../recaps.service';
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material';
+import { AuthService } from 'src/app/auth/auth.service';
 
 
 @Component({
@@ -22,9 +23,11 @@ export class RecapListComponent implements OnInit, OnDestroy {
   recapsPerPage = 2;
   currentPage = 1;
   recapSizeOptions = [1,2,5,10];
+  userIsAuthenticated = false;
   private recapsSub: Subscription;
+  private authStatusSub: Subscription;
 
-  constructor(public recapsService: RecapsService) {}
+  constructor(public recapsService: RecapsService, private authService: AuthService) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -35,6 +38,10 @@ export class RecapListComponent implements OnInit, OnDestroy {
         this.totalRecaps = recapData.recapCount;
         this.recaps = recapData.recaps;
       });
+     this.userIsAuthenticated = this.authService.getIsAuth();
+     this.authStatusSub =  this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+     });
   }
 
   onChangedRecap(recapData: PageEvent) {
@@ -53,6 +60,7 @@ export class RecapListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.recapsSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 
 }
