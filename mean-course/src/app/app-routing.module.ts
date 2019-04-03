@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: 'create', component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard]},
   { path: 'recap', component: RecapListComponent},
-  { path: 'createRecap', component: RecapCreateComponent},
-  { path: 'editRecap/:recapId', component: RecapCreateComponent},
+  { path: 'createRecap', component: RecapCreateComponent, canActivate: [AuthGuard]},
+  { path: 'editRecap/:recapId', component: RecapCreateComponent, canActivate: [AuthGuard]},
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule'}
 
 
