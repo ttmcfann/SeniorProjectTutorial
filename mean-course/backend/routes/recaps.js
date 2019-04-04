@@ -48,6 +48,11 @@ router.post("",
 
       }
   });
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: "Creating a recap failed!"
+    })
   });
 });
 
@@ -75,6 +80,11 @@ checkAuth
       } else {
         res.status(401).json({message: 'Not authorized!'});
       }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Couldn't update recap!"
+      })
     });
 });
 
@@ -85,7 +95,12 @@ router.get("/:id", (req, res, next) => {
     } else {
       res.status(404).json({message: 'Recap not found'});
     }
-  });
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: "Fetching recap failed"
+    });
+  });;
 });
 
 router.get( "", (req,res,next) => {
@@ -110,6 +125,11 @@ router.get( "", (req,res,next) => {
         recaps: fetchedRecaps,
         maxRecaps: count
       });
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Fetching recaps failed"
+      });
     });
 });
 
@@ -121,7 +141,12 @@ router.delete("/:id", checkAuth, (req, res, next) => {
     } else {
       res.status(401).json({message: 'Not authorized!'});
     }
-  });
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: "Fetching recaps failed"
+    });
+  });;
 });
 
 module.exports = router;

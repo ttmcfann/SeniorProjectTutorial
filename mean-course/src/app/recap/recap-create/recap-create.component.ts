@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 import { RecapsService } from '../recaps.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Recap } from '../recap.model';
 import { mimeType} from './mim-type.validator';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-recap-create',
   templateUrl: './recap-create.component.html',
   styleUrls: ['./recap-create.component.css']
 })
-export class RecapCreateComponent implements OnInit {
+export class RecapCreateComponent implements OnInit, OnDestroy {
   enteredContent = '';
   enteredTitle = '';
   isLoading = false;
@@ -20,13 +22,21 @@ export class RecapCreateComponent implements OnInit {
 
   private mode = 'create';
   private recapId: string;
+  private authStatusSub: Subscription;
   recap: Recap;
 
   constructor(
     public recapsService: RecapsService,
-    public route: ActivatedRoute) {}
+    public route: ActivatedRoute,
+    private authService: AuthService
+    ) {}
 
   ngOnInit() {
+    this.authService.getAuthStatusListener().subscribe(
+      authStatus => {
+        this.isLoading = false;
+      }
+    );
     this.form = new FormGroup({
       'title': new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
@@ -93,5 +103,8 @@ export class RecapCreateComponent implements OnInit {
     }
 
     this.form.reset();
+  }
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
   }
 }

@@ -59,6 +59,8 @@ export class RecapListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.recapsService.deleteRecap(recapId).subscribe(() => {
       this.recapsService.getRecaps(this.recapsPerPage, this.currentPage);
+    }, () => {
+      this.isLoading = false;
     });
   }
 
