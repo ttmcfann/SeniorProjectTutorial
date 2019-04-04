@@ -32,11 +32,12 @@ export class RecapCreateComponent implements OnInit, OnDestroy {
     ) {}
 
   ngOnInit() {
-    this.authService.getAuthStatusListener().subscribe(
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
       authStatus => {
         this.isLoading = false;
       }
     );
+
     this.form = new FormGroup({
       'title': new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
