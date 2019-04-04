@@ -34,9 +34,11 @@ router.post("",
   const recap = new Recap({
     title: req.body.title,
     content: req.body.content,
-    imagePath: url + '/images/' + req.file.filename
+    imagePath: url + '/images/' + req.file.filename,
+    creator: req.userData.userId
 
   });
+
   recap.save().then(createdRecap => {
     res.status(201).json({
       message: 'Recap added succesfully',

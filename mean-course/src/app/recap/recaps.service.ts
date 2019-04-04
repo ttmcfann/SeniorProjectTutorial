@@ -26,7 +26,8 @@ export class RecapsService {
             title: recap.title,
             content: recap.content,
             id: recap._id,
-            imagePath: recap.imagePath
+            imagePath: recap.imagePath,
+            creator: recap.creator
           };
         }),
         maxRecaps: recapData.maxRecaps};
