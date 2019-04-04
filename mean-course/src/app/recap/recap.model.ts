@@ -3,4 +3,5 @@ export interface Recap {
   title: string;
   content: string;
   imagePath: string;
+  creator: string;
 }

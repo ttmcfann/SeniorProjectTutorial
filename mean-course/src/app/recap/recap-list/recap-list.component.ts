@@ -24,6 +24,7 @@ export class RecapListComponent implements OnInit, OnDestroy {
   currentPage = 1;
   recapSizeOptions = [1,2,5,10];
   userIsAuthenticated = false;
+  userId: string;
   private recapsSub: Subscription;
   private authStatusSub: Subscription;
 
@@ -32,6 +33,7 @@ export class RecapListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.isLoading = true;
     this.recapsService.getRecaps(this.recapsPerPage, this.currentPage);
+    this.userId = this.authService.getUserId();
     this.recapsSub = this.recapsService.getRecapUpdateListener()
       .subscribe((recapData: {recaps: Recap[], recapCount: number}) => {
         this.isLoading = false;
@@ -41,6 +43,8 @@ export class RecapListComponent implements OnInit, OnDestroy {
      this.userIsAuthenticated = this.authService.getIsAuth();
      this.authStatusSub =  this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
+
      });
   }
 

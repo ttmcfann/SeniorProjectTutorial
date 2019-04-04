@@ -45,7 +45,8 @@ export class RecapCreateComponent implements OnInit {
             id: recapData._id,
             title: recapData.title,
             content: recapData.content,
-            imagePath: recapData.imagePath
+            imagePath: recapData.imagePath,
+            creator: recapData.creator
           };
           this.form.setValue({
             'title': this.recap.title,
