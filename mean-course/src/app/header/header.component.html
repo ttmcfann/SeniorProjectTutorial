@@ -14,9 +14,9 @@
       <a mat-button routerLink="/createRecap">CreateRecap</a>
     </li>
     <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
+      <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Admin</a>
     </li>
-    <li *ngIf="!userIsAuthenticated">
+    <li *ngIf="userIsAuthenticated">
       <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>
     </li>
     <li *ngIf="userIsAuthenticated">
