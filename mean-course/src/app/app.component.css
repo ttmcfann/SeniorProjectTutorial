@@ -1,4 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Dokdo|Indie+Flower|Lobster');
+
 main {
   width: 80%;
   margin: 1rem auto;
+}
+
+section {
+  background: #ff1b68;
+}
+
+h1 {
+  color: white;
+  font-family: 'Indie Flower', cursive;
 }
