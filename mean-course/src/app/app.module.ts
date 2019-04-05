@@ -6,15 +6,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './header/header.component';
-import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { PostsModule } from './posts/posts.module';
-import { RecapCreateComponent } from './recap/recap-create/recap-create.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RecapListComponent } from './recap/recap-list/recap-list.component';
+import { FormsModule } from '@angular/forms';
+import { RecapsModule } from './recap/recaps.module';
+import { AppRoutingModule } from './app-routing.module';
 
 
 
@@ -22,9 +21,7 @@ import { RecapListComponent } from './recap/recap-list/recap-list.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    ErrorComponent,
-    RecapCreateComponent,
-    RecapListComponent
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +31,7 @@ import { RecapListComponent } from './recap/recap-list/recap-list.component';
     AngularMaterialModule,
     PostsModule,
     FormsModule,
-    ReactiveFormsModule,
+    RecapsModule
 
   ],
   providers: [
