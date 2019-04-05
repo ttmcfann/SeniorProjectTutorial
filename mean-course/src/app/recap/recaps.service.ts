@@ -1,9 +1,13 @@
-import { Recap } from './recap.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+
+import { environment } from '../../environments/environment';
+import { Recap } from './recap.model';
+
+const BACKEND_URL = environment.apiUrl + '/recaps/';
 
 @Injectable({providedIn: 'root'})
 export class RecapsService {
@@ -18,7 +22,7 @@ export class RecapsService {
   getRecaps(recapsPerPage: number, currentPage: number) {
     const queryParams = `?pageSize=${recapsPerPage}&page=${currentPage}`;
     this.http.get<{message: string, recaps: any, maxRecaps: number}>(
-      'http://localhost:3000/api/recaps' + queryParams
+      BACKEND_URL + queryParams
       )
       .pipe(map((recapData) => {
         return {recaps: recapData.recaps.map(recap => {
@@ -52,7 +56,7 @@ export class RecapsService {
        content: string;
        imagePath: string;
        creator: string;
-      }>('http://localhost:3000/api/recaps/' + id);
+      }>(BACKEND_URL + id);
   }
 
   addRecap(title: string, content: string, image: File) {
@@ -62,7 +66,7 @@ export class RecapsService {
     recapData.append('image', image, title);
     this.http
       .post<{ message: string, recap: Recap}>(
-        'http://localhost:3000/api/recaps',
+        BACKEND_URL,
          recapData
         )
       .subscribe((responseData) => {
@@ -87,13 +91,13 @@ export class RecapsService {
         creator: null
       };
     }
-    this.http.put('http://localhost:3000/api/recaps/' + id, recapData)
+    this.http.put(BACKEND_URL + id, recapData)
       .subscribe(response => {
         this.router.navigate(['/']);
       });
   }
 
   deleteRecap(recapId: string) {
-    return this.http.delete('http://localhost:3000/api/recaps/' + recapId);
+    return this.http.delete(BACKEND_URL + recapId);
   }
 }
