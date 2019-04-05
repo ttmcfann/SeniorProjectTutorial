@@ -14,12 +14,6 @@ import { AngularMaterialModule } from './angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { RecapCreateComponent } from './recap/recap-create/recap-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  MatInputModule,
-  MatButtonModule,
-  MatProgressSpinnerModule,
-  MatExpansionModule,
-  MatPaginatorModule} from '@angular/material';
 import { RecapListComponent } from './recap/recap-list/recap-list.component';
 
 
@@ -40,12 +34,8 @@ import { RecapListComponent } from './recap/recap-list/recap-list.component';
     AngularMaterialModule,
     PostsModule,
     FormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatExpansionModule,
-    MatProgressSpinnerModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
