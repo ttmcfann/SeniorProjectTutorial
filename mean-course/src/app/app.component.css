@@ -1,19 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Dokdo|Indie+Flower|Lobster');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+body {
+  font-family: 'Montserrat', sans-serif;
 
+}
 main {
   width: 80%;
   margin: 1rem auto;
 }
 
+
 #website-overview {
   background: #ff1b68;
-}
-
-h1 {
-  color: white;
-  font-family: 'Indie Flower', cursive;
 }
 
 .section-title {
   color: #2ddf5c;
 }
+
+#website-overview h1 {
+  color: white;
+  font-family: 'Indie Flower', cursive;
+}
+
+
+
+
