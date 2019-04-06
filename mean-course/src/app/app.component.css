@@ -53,6 +53,14 @@ main {
   box-shadow: 2px 2px 2px 2px rgb(0, 0 ,0 ,0.5);
 }
 
+.event_annotation{
+  background: white;
+  color: #19b84c;
+  padding: 8px;
+  box-shadow: 2px 2px 2px 2px rgb(0, 0 ,0 ,0.5);
+  border-radius: 8px;
+}
+
 #website-overview h1 {
   color: white;
   font-family: 'Indie Flower', cursive;
