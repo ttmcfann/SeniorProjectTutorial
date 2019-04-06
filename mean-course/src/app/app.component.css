@@ -66,8 +66,32 @@ main {
   margin: 0;
 }
 
-.event_features li {
-  margin: 8px 0;
+
+
+.event_title {
+  color: #0e4f1f;
+}
+
+.event_times {
+  color: #858585;
+}
+
+.event--highlighted .event_title {
+  color: white;
+}
+
+.event--highlighted .event_times {
+  color: #0e4f1f;
+}
+
+.event_times {
+  color: rgb(88, 87, 87);
+}
+
+.event_features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 
