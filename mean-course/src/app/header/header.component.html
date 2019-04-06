@@ -1,23 +1,23 @@
 <mat-toolbar color="primary">
   <span>
-    <a routerLink="/">EventsPage</a>
+    <a routerLink="/" class="main-header-event">EventsPage</a>
   </span>
   <span class="spacer"></span>
   <ul>
     <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Event</a>
+      <a class="header-link" mat-button routerLink="/create" routerLinkActive="mat-accent">New Event</a>
     </li>
     <li>
-      <a mat-button routerLink="/recap">DevotionalRecap</a>
+      <a class="header-link" mat-button routerLink="/recap">DevotionalRecap</a>
     </li>
     <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="/createRecap">CreateRecap</a>
+      <a class="header-link" mat-button routerLink="/createRecap">CreateRecap</a>
     </li>
     <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Admin</a>
+      <a class="header-link" mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Admin</a>
     </li>
     <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>
+      <a class="header-link" mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>
     </li>
     <li *ngIf="userIsAuthenticated">
       <button mat-button (click) = "onLogout()">Logout</button>

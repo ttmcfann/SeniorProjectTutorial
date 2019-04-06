@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
 ul {
   list-style: none;
   padding: 0;
@@ -7,6 +9,10 @@ ul {
 a {
   text-decoration: none;
   color: white;
+}
+
+.header-link a:hover {
+  color: bold black;
 }
 
 ul {
@@ -20,3 +26,5 @@ ul {
 span {
   padding-left: 20px;
 }
+
+
