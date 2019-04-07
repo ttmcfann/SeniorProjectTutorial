@@ -125,6 +125,36 @@ main {
   margin: 32px;
 }
 
+.key-feature__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.key-feature {
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+}
+
+.key-feature__image {
+  background: #ffcede;
+  width: 128px;
+  height: 128px;
+  border: 2px solid #424242;
+  border-radius: 50%;
+  margin: auto;
+
+}
+
+.key-feature__discription {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  font-size: 20px;
+}
+
 
 #website-overview h1 {
   color: white;
