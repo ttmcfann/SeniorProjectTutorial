@@ -110,6 +110,20 @@ main {
   color:#0e4f1f;
 }
 
+.button:focus {
+  outline: none;
+}
+
+#key-features {
+  background: #ff1b68;
+  margin-top: 80px;
+  padding: 16px;
+}
+
+#key-features .section-title {
+  color: white;
+  margin: 32px;
+}
 
 
 #website-overview h1 {
