@@ -23,3 +23,11 @@ mat-paginator {
   width: 100%;
   box-shadow: 1px 1px rgba(0,0,0,0.5);
 }
+
+#recaps-overview {
+  background: #ff1b68;
+  padding: 10px;
+  border: 2px black solid;
+  border-width: 5px;
+  margin: 10px;
+}
