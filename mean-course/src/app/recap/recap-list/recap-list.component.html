@@ -8,8 +8,10 @@
 
 <main>
 <section id="website-overview">
+
     <h1>Welcome to the First Baptist Church College Ministry Website!</h1>
-d  <section id="recaps-overview">
+</section>
+ <section id="recaps-overview">
     <h1>Follow Us On Our Lesson Plan!</h1>
   </section>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
@@ -30,6 +32,7 @@ d  <section id="recaps-overview">
 </mat-accordion>
 <mat-paginator [length]="totalRecaps" [pageSize] ="recapsPerPage" [pageSizeOptions]="recapSizeOptions" (page)="onChangedRecap($event)" *ngIf="recaps.length > 0"></mat-paginator>
 <p class="info-text mat-body-1" *ngIf="recaps.length <=0 && !isLoading">No recaps added yet!</p>
+
 <section id="information">
       <h1 class="section-title">Some Regular Information!</h1>
       <div>
@@ -100,7 +103,7 @@ d  <section id="recaps-overview">
       </li>
 
     </ul>
-  </section>
+   </section>
 </main>
 <footer class="main-footer">
   <nav>
