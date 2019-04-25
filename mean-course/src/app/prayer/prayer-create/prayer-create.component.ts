@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
 
 })
 export class PrayerCreateComponent {
+  newPrayer = 'No Prayer';
 
+  onAddPrayer() {
+    this.newPrayer = 'The user\'s prayer';
+  }
 }
