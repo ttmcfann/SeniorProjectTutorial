@@ -16,12 +16,17 @@ import { RecapsModule } from './recap/recaps.module';
 import { AppRoutingModule } from './app-routing.module';
 
 
+import { PrayerCreateComponent } from './prayer/prayer-create/prayer-create.component';
+import { ContactListComponent } from './contacts/contact-list/contact-list.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ErrorComponent
+    ErrorComponent,
+    PrayerCreateComponent,
+    ContactListComponent
   ],
   imports: [
     BrowserModule,
