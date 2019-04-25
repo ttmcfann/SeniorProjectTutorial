@@ -1,4 +1,4 @@
-<textarea  rows="6" [value]="newPrayer"></textarea>
+<textarea  rows="6" [(ngModel)]="enteredPrayer"></textarea>
 <hr>
 <button (click)="onAddPrayer()">Save Prayer Request</button>
 <p>{{ newPrayer }}</p>
