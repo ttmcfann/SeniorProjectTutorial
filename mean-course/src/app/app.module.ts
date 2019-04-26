@@ -36,7 +36,6 @@ import { MatExpansionModule, MatButtonModule, MatToolbarModule, MatCardModule, M
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AngularMaterialModule,
     PostsModule,
     FormsModule,
     RecapsModule,
