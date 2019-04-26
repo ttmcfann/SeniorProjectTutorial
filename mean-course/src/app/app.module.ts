@@ -18,6 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { PrayerCreateComponent } from './prayer/prayer-create/prayer-create.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
+import { PrayerListComponent } from './prayer/prayer-list/prayer-list.component';
+import { MatExpansionModule, MatButtonModule, MatToolbarModule, MatCardModule, MatInputModule } from '@angular/material';
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { ContactListComponent } from './contacts/contact-list/contact-list.compo
     HeaderComponent,
     ErrorComponent,
     PrayerCreateComponent,
+    PrayerListComponent,
     ContactListComponent
   ],
   imports: [
@@ -36,7 +39,13 @@ import { ContactListComponent } from './contacts/contact-list/contact-list.compo
     AngularMaterialModule,
     PostsModule,
     FormsModule,
-    RecapsModule
+    RecapsModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatExpansionModule
+
 
   ],
   providers: [
