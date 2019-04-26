@@ -7,11 +7,12 @@ import { Component } from '@angular/core';
     styleUrls: ['./prayer-list.component.css']
 })
 export class PrayerListComponent {
-  prayers = [
-    {name: 'Bobby', content: 'my fish died'},
-    {name: 'Joe', content: 'my cat died'},
-    {name: 'Bobby', content: 'my dog died'},
-  ];
+  // prayers = [
+  //   {name: 'Bobby', content: 'my fish died'},
+  //   {name: 'Joe', content: 'my cat died'},
+  //   {name: 'Bobby', content: 'my dog died'},
+  // ];
+  prayers = [];
 
 }
 

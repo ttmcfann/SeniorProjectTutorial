@@ -1,8 +1,9 @@
-<mat-accordion>
-  <mat-expansion-panel>
+<mat-accordion multi="true" *ngIf="prayers.length > 0">
+  <mat-expansion-panel *ngFor="let prayer of prayers">
     <mat-expansion-panel-header>
-      The expansion title!
+      {{ prayer.name }}
     </mat-expansion-panel-header>
-    <p>I'm in an expansion panel!</p>
+    <p>{{ prayer.content }}</p>
   </mat-expansion-panel>
 </mat-accordion>
+<p class="info-text mat-body-1" *ngIf="prayers.length <= 0">No Prayer Requests added yet</p>
