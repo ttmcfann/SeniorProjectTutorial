@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-prayer-create',
-  templateUrl: './prayer-create.component.html'
+  templateUrl: './prayer-create.component.html',
+  styleUrls:  ['./prayer-create.component.css']
 
 })
 export class PrayerCreateComponent {
