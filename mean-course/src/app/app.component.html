@@ -9,7 +9,6 @@
 
 <main>
   <router-outlet></router-outlet>
-  <app-contact-list></app-contact-list>
   <app-prayer-create (prayerCreated)="onPrayerAdded($event)"></app-prayer-create>
   <app-prayer-list [prayers]= "storedPrayers"></app-prayer-list>
 </main>

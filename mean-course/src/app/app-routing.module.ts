@@ -5,9 +5,11 @@ import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RecapListComponent } from './recap/recap-list/recap-list.component';
 import { RecapCreateComponent } from './recap/recap-create/recap-create.component';
+import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 
 const routes: Routes = [
   { path: '', component: PostListComponent },
+  { path: 'contact', component: ContactListComponent },
   { path: 'create', component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard]},
   { path: 'recap', component: RecapListComponent},
