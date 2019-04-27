@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { Prayer } from '../prayer.model';
 
 @Component({
     selector: 'app-prayer-list',
