@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class PrayerListComponent {
   //   {name: 'Joe', content: 'my cat died'},
   //   {name: 'Bobby', content: 'my dog died'},
   // ];
-  prayers = [];
+  @Input() prayers = [];
 
 }
 

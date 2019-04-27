@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-prayer-create',
@@ -7,11 +7,15 @@ import { Component } from '@angular/core';
 
 })
 export class PrayerCreateComponent {
+  enteredName = '';
   enteredPrayer = '';
-  newPrayer = 'No Prayer';
+  @Output() prayerCreated = new EventEmitter();
 
   onAddPrayer() {
-
-    this.newPrayer = this.enteredPrayer;
+    const prayer = {
+      name: this.enteredName,
+      content: this.enteredPrayer
+    };
+    this.prayerCreated.emit(prayer);
   }
 }
