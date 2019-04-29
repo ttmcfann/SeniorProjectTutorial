@@ -192,6 +192,12 @@ main {
   font-size: 20px;
 }
 
+.ministry_list {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
 
 #website-overview h1 {
   color: white;

@@ -196,6 +196,12 @@ main {
   font-family: 'Indie Flower', cursive;
 }
 
+.ministry_list {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
 .main-footer {
   background: black;
   padding: 32px;
