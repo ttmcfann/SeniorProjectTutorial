@@ -27,4 +27,8 @@ span {
   padding-left: 20px;
 }
 
+.main-header {
+  position: fixed;
+  width: 100%;
+}
 
