@@ -45,6 +45,11 @@ main {
   text-align: right;
 }
 
+#first:hover,
+#free:active {
+  border-left-color: #ff5454;
+}
+
 #second {
   background: rgba(234, 252, 237, 0.95);
 }
