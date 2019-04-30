@@ -39,7 +39,7 @@ export class AuthService {
     this.http
       .post(BACKEND_URL + '/signup', authData)
       .subscribe(() => {
-        this.router.navigate["/"];
+        this.router.navigate(['/']);
       }, error => {
         this.authStatusListener.next(false);
       });
