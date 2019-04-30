@@ -18,13 +18,47 @@ mat-paginator {
 }
 
 .post-image {
-  width: 100%;
+  width: 65%;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .post-image img {
   width: 100%;
   box-shadow: 1px 1 px 5px rgba(0,0,0,0.5);
 }
+
+.Etitle {
+  text-align: right;
+  padding: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  color: #ff5454;
+  font-size: 25px;
+  margin: 3px;
+
+}
+
+.Etitle2 {
+  text-align: right;
+  display: inline-block;
+  vertical-align: middle;
+  color: rgb(151, 82, 82);
+  font-size: 30px;
+  margin: 3px;
+}
+
+.Econtent {
+  text-align: right;
+  padding: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 25px;
+  width: 30%;
+  margin: 48px 0;
+  background: #19b84c;
+}
+
 
 #events-overview {
   background: #ff1b68;
@@ -211,6 +245,8 @@ main {
   margin: auto;
   text-align: center;
 }
+
+
 
 
 .main-footer {
