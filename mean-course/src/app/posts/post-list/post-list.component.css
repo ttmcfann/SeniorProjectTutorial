@@ -21,6 +21,7 @@ mat-paginator {
   width: 65%;
   display: inline-block;
   vertical-align: middle;
+  padding-left: 30%;
 }
 
 .post-image img {
@@ -29,7 +30,7 @@ mat-paginator {
 }
 
 .Etitle {
-  text-align: right;
+  text-align: center;
   padding: 14px;
   display: inline-block;
   vertical-align: middle;
@@ -40,7 +41,7 @@ mat-paginator {
 }
 
 .Etitle2 {
-  text-align: right;
+  text-align: center;
   display: inline-block;
   vertical-align: middle;
   color: rgb(151, 82, 82);
