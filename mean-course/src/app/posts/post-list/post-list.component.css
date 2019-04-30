@@ -56,7 +56,6 @@ mat-paginator {
   font-size: 25px;
   width: 30%;
   margin: 48px 0;
-
 }
 
 .Econtent2 {
@@ -64,8 +63,9 @@ mat-paginator {
   padding: 10px;
   background: #19b84c;
 
-
 }
+
+
 
 
 #events-overview {

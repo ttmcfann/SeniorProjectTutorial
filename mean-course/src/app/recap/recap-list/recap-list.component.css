@@ -31,7 +31,7 @@ mat-paginator {
 .recap-image img {
   width: 100%;
   height: 100%;
-  vertical-align: left;
+  vertical-align: middle;
 }
 
 .Rtitle {
@@ -59,11 +59,12 @@ mat-paginator {
   text-align: left;
   padding: 14px;
   display: inline-block;
-  vertical-align: left;
+  vertical-align: middle;
   font-size: 25px;
   width: 70%;
   margin: 48px 0;
-
+  overflow: auto;
+  max-height: 300px;
 }
 
 .Rcontent2 {
