@@ -35,3 +35,28 @@ span {
   z-index: 1;
 }
 
+.main-header > div {
+  display: inline-block;
+}
+
+.header-color {
+  background-color: #2ddf5c;
+}
+
+.main-header-event {
+  color: #034f1f;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 22px;
+  display: inline-block;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #0e4f1f;
+}
+
+.main-header img {
+  height: 50px;
+}
+
