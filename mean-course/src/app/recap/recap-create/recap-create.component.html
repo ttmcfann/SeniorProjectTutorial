@@ -1,4 +1,5 @@
-<mat-card>
+<div class="recap">
+  <mat-card>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <form [formGroup]="form" (submit)= "onSaveRecap()" *ngIf="!isLoading">
   <mat-form-field>
@@ -32,4 +33,6 @@
 </form>
 
 </mat-card>
+</div>
+
 

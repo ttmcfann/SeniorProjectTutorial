@@ -28,10 +28,10 @@ mat-paginator {
 
 #events-overview {
   background: #ff1b68;
-  padding: 10px;
   border: 2px black solid;
   border-width: 5px;
   margin: 10px;
+  padding: 10px;
 }
 
 
@@ -54,12 +54,20 @@ main {
 
 
 #website-overview {
-  background: url("../../FBC3.png");
+  background: url("../../FBC2.JPG");
   width: 100%;
-  height: 520px;
+  height: 528px;
   padding: 10px;
-  background-repeat: no-repeat;
+  margin-top: 43px;
+  position: relative;
+}
 
+#website-overview h1 {
+  color: white;
+  font-family: 'Indie Flower', cursive;
+  position: absolute;
+  bottom: 5%;
+  left: 3%;
 }
 
 #events-overview {
@@ -199,11 +207,6 @@ main {
   text-align: center;
 }
 
-
-#website-overview h1 {
-  color: white;
-  font-family: 'Indie Flower', cursive;
-}
 
 .main-footer {
   background: black;

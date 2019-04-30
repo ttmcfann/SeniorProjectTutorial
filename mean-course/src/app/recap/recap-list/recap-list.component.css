@@ -13,6 +13,10 @@ mat-paginator {
   margin-top: 1rem;
 }
 
+.recap {
+  margin-top: 100px;
+}
+
 .info-text {
   text-align: center;
 }
