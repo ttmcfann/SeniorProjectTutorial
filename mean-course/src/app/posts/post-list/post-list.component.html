@@ -7,6 +7,12 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 </head>
 
+<!-- Go Here: http://labs.bible.org/NETBibleTagger to add this to your site. -->
+<script type="text/javascript" defer="defer" src="https://labs.bible.org/api/NETBibleTagger/v2/netbibletagger.js">
+org.bible.NETBibleTagger.voidOnMouseOut = true;
+org.bible.NETBibleTagger.parseAnchors = true;
+</script>
+
 <main>
 <section id="website-overview">
     <h1>Welcome to the First Baptist Church College Ministry Website!</h1>
@@ -29,9 +35,9 @@
     </div>
     <div class="Econtent">
       <div class="Etitle2">
-        {{ post.title }}
+      <a href="javascript:{}" class="NETBibleTagged"> {{ post.title }}</a>
       </div>
-      <p >
+      <p class = "Econtent2 NETBibleTagged">
         {{ post.content }}
       </p>
     </div>

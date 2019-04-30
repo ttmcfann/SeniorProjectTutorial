@@ -22,12 +22,54 @@ mat-paginator {
 }
 
 .recap-image {
-  width: 100%;
+  width: 25%;
+  vertical-align: middle;
+  display: inline-block;
+  box-shadow: 3px 3px 5px 3px rgba(0,0,0,0.3);
 }
 
 .recap-image img {
   width: 100%;
-  box-shadow: 1px 1px rgba(0,0,0,0.5);
+  height: 100%;
+  vertical-align: left;
+}
+
+.Rtitle {
+  text-align: left;
+  padding: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  color: #ff5454;
+  font-size: 25px;
+  margin: 3px;
+
+}
+
+.Rtitle2 {
+  text-align: left;
+  display: inline-block;
+  vertical-align: middle;
+  color: rgb(151, 82, 82);
+  font-size: 30px;
+  margin: 3px;
+  padding-left: 15px;
+}
+
+.Rcontent {
+  text-align: left;
+  padding: 14px;
+  display: inline-block;
+  vertical-align: left;
+  font-size: 25px;
+  width: 70%;
+  margin: 48px 0;
+
+}
+
+.Rcontent2 {
+  text-align: center;
+  padding: 10px;
+  background: #F1F1D4;
 }
 
 #recaps-overview {

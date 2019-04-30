@@ -49,14 +49,22 @@ mat-paginator {
 }
 
 .Econtent {
-  text-align: right;
+  text-align: center;
   padding: 14px;
   display: inline-block;
   vertical-align: middle;
   font-size: 25px;
   width: 30%;
   margin: 48px 0;
+
+}
+
+.Econtent2 {
+  text-align: center;
+  padding: 10px;
   background: #19b84c;
+
+
 }
 
 
